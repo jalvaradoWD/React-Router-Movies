@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
-const MovieList = props => {
+const MovieList = ({ movies }) => {
   return (
     <div className="movie-list">
-      {props.movies.map(movie => (
-        <MovieDetails key={movie.id} movie={movie} />
-      ))}
+      {movies
+        ? movies.map((movie) => <MovieDetails key={movie.id} movie={movie} />)
+        : null}
     </div>
   );
-}
+};
 
 function MovieDetails({ movie }) {
   const { title, director, metascore } = movie;
