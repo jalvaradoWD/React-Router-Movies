@@ -1,19 +1,25 @@
 import React from "react";
 
-const MovieList = ({ movies }) => {
+const MovieList = (props) => {
+  const { movies, history } = props;
   return (
     <div className="movie-list">
       {movies
-        ? movies.map((movie) => <MovieDetails key={movie.id} movie={movie} />)
+        ? movies.map((movie) => (
+            <MovieDetails {...props} key={movie.id} movie={movie} />
+          ))
         : null}
     </div>
   );
 };
 
-function MovieDetails({ movie }) {
-  const { title, director, metascore } = movie;
+function MovieDetails({ movie, history }) {
+  const { title, director, metascore, id } = movie;
   return (
-    <div className="movie-card">
+    <div
+      onClick={() => history.replace(`/movies/${id}`)}
+      className="movie-card"
+    >
       <h2>{title}</h2>
       <div className="movie-director">
         Director: <em>{director}</em>
