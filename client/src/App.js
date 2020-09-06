@@ -29,7 +29,6 @@ const App = () => {
     // This is stretch. Prevent the same movie from being "saved" more than once
   };
 
-  console.log(movieList);
   return (
     <div>
       <SavedList
